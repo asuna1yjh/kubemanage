@@ -1,2 +1,4 @@
 ###
-这是一个gin脚手架
+这是一个kubemange的后端项目
+```bash
+go run main.go
