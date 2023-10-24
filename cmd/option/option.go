@@ -42,9 +42,9 @@ func (o *Option) Complete() error {
 		return err
 	}
 	// 初始化数据库接口
-	if err := o.RegisterFactory(); err != nil {
-		return err
-	}
+	//if err := o.RegisterFactory(); err != nil {
+	//	return err
+	//}
 
 	return nil
 }
@@ -86,7 +86,7 @@ func (o *Option) InitDB() error {
 	return nil
 }
 
-func (o *Option) RegisterFactory() error {
-	o.Factory = dao.NewShareDaoFactory(context.TODO(), o.DB)
-	return nil
-}
+//func (o *Option) RegisterFactory() error {
+//	o.Factory = dao.NewShareDaoFactory(context.TODO(), o.DB)
+//	return nil
+//}

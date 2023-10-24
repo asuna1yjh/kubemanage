@@ -6,7 +6,7 @@ package cmd
 import (
 	"context"
 	"gin_demo/cmd/option"
-	"gin_demo/logic"
+	"gin_demo/cmd/wire"
 	"gin_demo/pkg/snowflake"
 	"gin_demo/pkg/validator"
 	"gin_demo/routes"
@@ -41,8 +41,11 @@ var rootCmd = &cobra.Command{
 			panic(err)
 		}
 		// 初始化logic
-		useCase := logic.NewUserUseCase(Option.Factory)
-		r := routes.Setup(Option, useCase)
+		//useCase := logic.NewUserUseCase(Option.Factory)
+		r := routes.Setup(Option,
+			wire.InitRouter(Option.Ctx, Option.DB), // 注册路由
+			wire.InitKubeRouter(),                  //注册k8s路由
+		)
 		// 5.1 修改gin框架里面的Validator引擎属性，实现自定制
 		err = validator.InitTrans("zh")
 		if err != nil {

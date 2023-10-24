@@ -21,7 +21,7 @@ type UserRepoInterface interface {
 	FindByUserID(int64) (*models.User, error)
 }
 
-func NewUserRepo(ctx context.Context, db *gorm.DB) UserRepoInterface {
+func NewUserRepo(ctx context.Context, db *gorm.DB) *UserRepo {
 	return &UserRepo{
 		ctx: ctx,
 		db:  db,

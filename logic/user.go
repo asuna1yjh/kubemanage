@@ -22,7 +22,7 @@ type UserInterface interface {
 	GetUserInfo(int64) (data *models.User, err error)
 }
 
-func NewUserUseCase(db *dao.ShareDaoFactory) UserInterface {
+func NewUserUseCase(db *dao.ShareDaoFactory) *UserUseCase {
 	return &UserUseCase{
 		db: db,
 	}

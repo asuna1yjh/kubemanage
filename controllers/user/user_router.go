@@ -3,15 +3,18 @@ package user
 import (
 	"gin_demo/logic"
 	"gin_demo/middlewares"
+	"gin_demo/routes"
+
+	"github.com/google/wire"
 
 	"github.com/gin-gonic/gin"
 )
 
 type UserRouter struct {
-	us logic.UserInterface
+	us *logic.UserUseCase
 }
 
-func NewUserRouter(us logic.UserInterface) func(r *gin.RouterGroup) {
+func NewUserRouter(us *logic.UserUseCase) routes.Option {
 	ur := &UserRouter{
 		us: us,
 	}
@@ -24,3 +27,5 @@ func NewUserRouter(us logic.UserInterface) func(r *gin.RouterGroup) {
 		}
 	}
 }
+
+var ProviderSet = wire.NewSet(NewUserRouter)
