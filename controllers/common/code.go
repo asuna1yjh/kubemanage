@@ -13,17 +13,19 @@ var (
 	ErrorUserExist       = errors.New("用户已存在")
 	ErrorUserNotExist    = errors.New("用户不存在")
 	ErrorInvalidPassword = errors.New("用户名或密码错误")
+	ErrorNotExist        = errors.New("资源不存在")
 )
 
 const (
-	CodeSuccess ResCode = 1000 + iota
-	CodeInvalidParams
+	CodeSuccess       ResCode = 200
+	CodeInvalidParams ResCode = 1000 + iota
 	CodeUserExist
 	CodeUserNotExist
 	CodeInvalidPassword
 	CodeServerBusy
 	CodeNeedLogin
 	CodeInvalidToken
+	CodeNotExist
 )
 
 var CodeMsg = map[ResCode]string{
@@ -35,6 +37,7 @@ var CodeMsg = map[ResCode]string{
 	CodeServerBusy:      "服务繁忙",
 	CodeNeedLogin:       "需要登录",
 	CodeInvalidToken:    "无效的token",
+	CodeNotExist:        "资源不存在",
 }
 
 func (c ResCode) Msg() string {

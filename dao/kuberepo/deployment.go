@@ -25,3 +25,11 @@ func (d *Deployment) GetDeploymentList(namespce string) (list *appv1.DeploymentL
 	}
 	return
 }
+
+func (d *Deployment) CreateDeployment(deploy *appv1.Deployment) (err error) {
+	_, err = d.KubeFactory.Client.AppsV1().Deployments(deploy.Namespace).Create(context.Background(), deploy, v1.CreateOptions{})
+	if err != nil {
+		return err
+	}
+	return
+}

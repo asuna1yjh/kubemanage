@@ -12,7 +12,7 @@ import (
 // package common
 
 func Parameter(c *gin.Context, p any) (err error) {
-	if err = c.ShouldBindJSON(p); err != nil {
+	if err = c.ShouldBind(p); err != nil {
 		errs, ok := err.(validator.ValidationErrors)
 		if !ok {
 			// 非validator.ValidationErrors类型错误直接返回

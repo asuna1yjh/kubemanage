@@ -1,0 +1,221 @@
+basePath: /api
+host: localhost:8080
+info:
+  contact: {}
+  description: gin_demo API文档
+  title: gin_demo API文档
+  version: v1
+paths:
+  /k8s/deployment/create:
+    post:
+      consumes:
+      - application/json
+      description: 创建deployment
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 200, msg="", "data": "新增成功"}'
+          schema:
+            type: string
+      summary: 创建deployment
+      tags:
+      - k8s
+  /k8s/deployment/delete:
+    delete:
+      consumes:
+      - application/json
+      description: 删除deployment
+      parameters:
+      - description: Deployment名称
+        in: query
+        name: name
+        required: true
+        type: string
+      - description: 命名空间
+        in: query
+        name: namespace
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 200, msg="", "data": "删除成功"}'
+          schema:
+            type: string
+      summary: 删除deployment
+      tags:
+      - k8s
+  /k8s/deployment/detail:
+    get:
+      consumes:
+      - application/json
+      description: 获取deployment详情
+      parameters:
+      - description: Deployment名称
+        in: query
+        name: name
+        required: true
+        type: string
+      - description: 命名空间
+        in: query
+        name: namespace
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 200, msg="", "data": "获取成功"}'
+          schema:
+            type: string
+      summary: 获取deployment详情
+      tags:
+      - k8s
+  /k8s/deployment/list:
+    get:
+      consumes:
+      - application/json
+      description: 获取deployment列表
+      parameters:
+      - description: 命名空间
+        in: query
+        name: namespace
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 200, msg="", "data": "获取成功"}'
+          schema:
+            type: string
+      summary: 获取deployment列表
+      tags:
+      - k8s
+  /k8s/deployment/restart:
+    post:
+      consumes:
+      - application/json
+      description: 重启deployment
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 200, msg="", "data": "重启成功"}'
+          schema:
+            type: string
+      summary: 重启deployment
+      tags:
+      - k8s
+  /k8s/deployment/scale:
+    get:
+      consumes:
+      - application/json
+      description: 获取deployment数量
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 200, msg="", "data": "扩容成功"}'
+          schema:
+            type: string
+      summary: 获取deployment数量
+      tags:
+      - k8s
+    put:
+      consumes:
+      - application/json
+      description: 扩容deployment
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 200, msg="", "data": "扩容成功"}'
+          schema:
+            type: string
+      summary: 扩容deployment
+      tags:
+      - k8s
+  /k8s/deployment/update:
+    post:
+      consumes:
+      - application/json
+      description: 更新deployment
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 200, msg="", "data": "更新成功"}'
+          schema:
+            type: string
+      summary: 更新deployment
+      tags:
+      - k8s
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: 用户登录接口
+      parameters:
+      - description: 用户名
+        in: body
+        name: username
+        required: true
+        schema:
+          type: string
+      - description: 密码
+        in: body
+        name: password
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{},"msg":"ok"}'
+          schema:
+            type: string
+      summary: 用户登录
+      tags:
+      - 用户
+schemes:
+- http
+swagger: "2.0"
