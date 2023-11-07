@@ -26,6 +26,8 @@ const (
 	CodeNeedLogin
 	CodeInvalidToken
 	CodeNotExist
+	CodeQueryError
+	CodeDeleteError
 )
 
 var CodeMsg = map[ResCode]string{
@@ -38,6 +40,8 @@ var CodeMsg = map[ResCode]string{
 	CodeNeedLogin:       "需要登录",
 	CodeInvalidToken:    "无效的token",
 	CodeNotExist:        "资源不存在",
+	CodeQueryError:      "查询失败",
+	CodeDeleteError:     "删除失败",
 }
 
 func (c ResCode) Msg() string {

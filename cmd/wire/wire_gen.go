@@ -33,6 +33,8 @@ func InitKubeRouter() routes.Option {
 	deployment := kuberepo.NewDeployment(kubeFactory)
 	deploymentUseCase := kubeusecase.NewDeploymentUseCase(deployment)
 	kubecontrollerDeployment := kubecontroller.NewDeployment(deploymentUseCase)
-	option := kubecontroller.InitKubeRouter(kubecontrollerDeployment)
+	podUseCase := kubeusecase.NewPodUseCase(kubeFactory)
+	pod := kubecontroller.NewPod(podUseCase)
+	option := kubecontroller.InitKubeRouter(kubecontrollerDeployment, pod)
 	return option
 }

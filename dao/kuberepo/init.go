@@ -3,6 +3,7 @@ package kuberepo
 import (
 	"go.uber.org/zap"
 	"k8s.io/client-go/kubernetes"
+	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 )
 
@@ -11,6 +12,7 @@ import (
 
 type KubeFactory struct {
 	Client kubernetes.Interface
+	Config *rest.Config
 }
 
 func NewKubeFactory() *KubeFactory {
@@ -27,5 +29,8 @@ func NewKubeFactory() *KubeFactory {
 		return nil
 	}
 	zap.L().Info("获取k8s clientSet 成功")
-	return &KubeFactory{Client: clientset}
+	return &KubeFactory{
+		Client: clientset,
+		Config: config,
+	}
 }

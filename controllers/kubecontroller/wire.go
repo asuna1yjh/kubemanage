@@ -2,4 +2,4 @@ package kubecontroller
 
 import "github.com/google/wire"
 
-var ProviderSet = wire.NewSet(NewDeployment, InitKubeRouter)
+var ProviderSet = wire.NewSet(NewDeployment, NewPod, InitKubeRouter)
